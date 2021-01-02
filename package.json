@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ulvido/electron-updater-example.git"
+    "url": "https://github.com/ulvido/electron-updater-example-master"
   },
   "build": {
     "appId": "com.updatetest.app",
