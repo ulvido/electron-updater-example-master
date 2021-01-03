@@ -2,18 +2,21 @@
   "name": "electron-updater-example",
   "version": "0.7.3",
   "main": "main.js",
-  "description": "electron-updater example project",
+  "description": "Electron otomatik güncelleme testleri",
   "author": "Matt Haggard",
   "scripts": {
-    "publish": "build -p always"
+    "build:all": "electron-builder --linux --win",
+    "build:linux": "electron-builder --linux",
+    "build:win": "electron-builder --win",
+    "publish": "electron-builder --win --linux -p always"
   },
   "devDependencies": {
-    "electron": "^3.0.2",
-    "electron-builder": "^20.28.4"
+    "electron": "^11.1.1",
+    "electron-builder": "^22.9.1"
   },
   "dependencies": {
-    "electron-log": "^1.3.0",
-    "electron-updater": "^4.0.6"
+    "electron-log": "^4.3.1",
+    "electron-updater": "^4.3.5"
   },
   "repository": {
     "type": "git",
@@ -21,10 +24,17 @@
   },
   "build": {
     "appId": "com.updatetest.app",
-    "productName": "ECZADO",
+    "productName": "Electron Autoupdate Test",
     "directories": {
-      "app": "",
       "output": "dist/builder"
+    },
+    "files": [
+      "**/*",
+      "!.electron-cache${/*}"
+    ],
+    "electronVersion": "11.1.1",
+    "electronDownload": {
+      "cache": ".electron-cache"
     },
     "mac": {
       "category": "your.app.category.type",
@@ -34,8 +44,9 @@
       ]
     },
     "linux": {
-      "icon": "dist/desktop/assets/icon/256x256.png",
-      "category": "Accessories",
+      "synopsis": "Electron otomatik update",
+      "icon": "256x256.png",
+      "category": "Office",
       "target": [
         {
           "target": "AppImage",
@@ -47,12 +58,12 @@
     },
     "win": {
       "publisherName": "Ulvi YELEN",
-      "icon": "dist/desktop/assets/icon/256x256.png",
+      "icon": "256x256.png",
       "target": [
         {
           "target": "nsis",
           "arch": [
-            "ia32"
+            "x64"
           ]
         }
       ]
